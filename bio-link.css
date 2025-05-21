@@ -1,0 +1,356 @@
+/* --- Variable Definitions --- */
+:root {
+    --primary-color: #2c3e50; /* Dark Blue/Grey - Adjust to brand */
+    --accent-color: #3498db;  /* Blue Accent - Adjust to brand */
+    --background-color: #ecf0f1; /* Light grey page background */
+    --text-color: #34495e;    /* Dark grey text */
+    --button-text-color: #ffffff; /* White text on buttons */
+    --special-button-text-color: hwb(175 0% 0%);
+    --icon-spacing: 10px; /* Space between icon and text */
+    --new-indicator-color: #e74c3c; /* Red color for "New" */
+}
+
+/* --- Global Styles --- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    display: flex;
+    justify-content: center; /* Center horizontally */
+    align-items: center;     /* Center vertically */
+    /* min-height: 100vh; */
+    padding: 20px;
+    line-height: 1.6;
+}
+
+/* Wrapper for the main content */
+.content-wrapper {
+    max-width: 500px;
+    width: 100%;
+    text-align: center;
+}
+
+/* --- Header --- */
+header {
+    margin-bottom: 40px;
+}
+
+.logo {
+    max-width: 150px;
+    height: auto;
+    margin-bottom: -30px;
+    border-radius: 50%;
+}
+
+h1 {
+    font-size: 1.6em;
+    color: var(--primary-color);
+    margin-bottom: 5px;
+}
+
+.tagline {
+    font-size: 1em;
+    color: var(--text-color);
+    font-weight: 300;
+}
+
+/* --- Links --- */
+.links ul {
+    list-style: none;
+    padding: 0; /* Ensure no default padding */
+}
+
+.links li {
+    margin-bottom: 18px;
+}
+
+/* Base styles for all link buttons (<a> and <button>) */
+.link-button {
+    position: relative; /* Needed for absolute positioning of child elements like 'New' tag */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%; /* Make buttons take full width */
+    gap: var(--icon-spacing);
+    background-color: var(--primary-color);
+    color: var(--button-text-color);
+    text-decoration: none;
+    padding: 14px 20px;
+    border-radius: 25px;
+    font-size: 1em;
+    font-weight: 500;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    border: 1px solid var(--primary-color); /* Default border */
+    box-shadow: 0 3px 8px rgba(44, 62, 80, 0.2);
+    text-align: center;
+    cursor: pointer; /* Ensure pointer cursor */
+}
+
+/* Specific styles for <button> elements using .link-button class */
+button.link-button {
+  font-family: inherit; /* Inherit font */
+  /* Other styles are inherited or set by .link-button */
+}
+
+
+.link-button i {
+    width: 1.2em; /* Consistent icon sizing */
+    text-align: center;
+    font-size: 1.1em;
+}
+
+.link-button:hover,
+.link-button:focus {
+    background-color: #34495e;
+    border-color: #34495e;
+    transform: translateY(-2px);
+    outline: none;
+    box-shadow: 0 5px 12px rgba(44, 62, 80, 0.3);
+}
+
+/* --- ***** REPLACE this entire rule ***** --- */
+/* NEW Styles for the "New" Indicator */
+.new-indicator {
+    position: absolute;
+    /* Positioning using transform relative to normal flow position (before icon) */
+    /* Adjust X (-ve = left, +ve = right) and Y (-ve = up, +ve = down) values */
+    transform: translate(-18px, -12px) rotate(-45deg); /* Moves left/up and rotates */
+    transform-origin: center; /* Rotates around the center of the element */
+    z-index: 2; /* Ensure it sits above the button content if needed */
+
+    /* Visual Styling */
+    background-color: var(--new-indicator-color); /* Red background */
+    color: white;          /* White text */
+    font-size: 8px;        /* Small text */
+    font-weight: bold;
+    padding: 1px 4px;      /* Small padding */
+    border-radius: 3px;    /* Slightly rounded corners */
+    line-height: 1;        /* Tight line height */
+    white-space: nowrap;   /* Prevent wrapping if text gets longer */
+    text-transform: uppercase;
+
+    /* Apply the blinking animation (opacity) */
+    animation: blinkOpacity 1.2s steps(1, end) infinite;
+}
+
+/* Keep the blinkOpacity keyframes */
+@keyframes blinkOpacity {
+  0% { opacity: 1; }
+  50% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+
+/* --- Website Button Shake Effect --- */
+.shake-effect {
+  animation: shake 3s linear infinite;
+  /* Visual distinction */
+  /* background-color: var(--accent-color); */
+  /* border-color: var(--accent-color); */
+  font-weight: bold;
+  color: var(--special-button-text-color);
+}
+
+/* Continuous Shaking Animation */
+@keyframes shake {
+    0% {
+        transform: translateX(3px) rotate(1deg);
+    }
+    2.5% {
+        transform: translateX(-3px) rotate(-1deg);
+    }
+    5% {
+        transform: translateX(3px) rotate(1deg);
+    }
+    7.5% {
+        transform: translateX(-3px) rotate(-1deg);
+    }
+    10% {
+        transform: translateX(2px) rotate(1deg);
+    }
+    12.5% {
+        transform: translateX(-2px) rotate(-1deg);
+    }
+    15% {
+        transform: translateX(2px) rotate(1deg);
+    }
+    17.5% {
+        transform: translateX(-2px) rotate(-1deg);
+    }
+    20% {
+        transform: translateX(1px) rotate(1deg);
+    }
+    22.5% {
+        transform: translateX(-1px) rotate(-1deg);
+    }
+    25% {
+        transform: translateX(0) rotate(0);
+    }
+}
+
+.shake-effect:hover,
+.shake-effect:focus {
+  background-color: #2980b9;
+  border-color: #2980b9;
+  animation-play-state: paused; /* Pause shake on hover */
+  color: var(--button-text-color);
+}
+
+
+/* --- Location Popup Styles --- */
+.popup-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0s linear 0.3s;
+}
+
+.popup-overlay.active {
+  opacity: 1;
+  visibility: visible;
+  transition: opacity 0.3s ease;
+}
+
+.popup-content {
+  background-color: #ffffff;
+  color: var(--text-color);
+  padding: 30px 40px;
+  border-radius: 8px;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.25);
+  text-align: center;
+  max-width: 90%;
+  width: 400px;
+  position: relative;
+  transform: scale(0.9);
+  opacity: 0;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.popup-overlay.active .popup-content {
+  transform: scale(1);
+  opacity: 1;
+}
+
+
+.popup-close {
+  position: absolute;
+  top: 8px;
+  right: 12px;
+  background: none;
+  border: none;
+  font-size: 2em;
+  font-weight: bold;
+  color: #aaa;
+  cursor: pointer;
+  line-height: 1;
+  padding: 0;
+  transition: color 0.2s ease;
+}
+
+.popup-close:hover {
+  color: #333;
+}
+
+.popup-content h2 {
+  margin-top: 0;
+  margin-bottom: 15px;
+  color: var(--primary-color);
+  font-size: 1.5em;
+}
+
+.popup-content .address-text {
+  margin-bottom: 25px;
+  line-height: 1.7;
+  font-size: 1em;
+  color: var(--text-color);
+}
+
+.popup-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background-color: var(--accent-color);
+  color: var(--button-text-color);
+  text-decoration: none;
+  padding: 12px 25px;
+  border-radius: 25px;
+  font-size: 1em;
+  font-weight: 500;
+  border: 1px solid var(--accent-color);
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  cursor: pointer;
+}
+
+.popup-button i {
+  font-size: 1.1em;
+}
+
+.popup-button:hover {
+  background-color: #2980b9;
+  border-color: #2980b9;
+  transform: translateY(-2px);
+}
+
+
+/* --- Responsive Adjustments --- */
+@media (max-width: 480px) {
+    .content-wrapper {
+        max-width: 95%;
+    }
+
+    h1 {
+        font-size: 1.4em;
+    }
+
+    .tagline {
+        font-size: 0.9em;
+    }
+
+    .link-button {
+        padding: 12px 15px;
+        font-size: 0.95em;
+        gap: 8px;
+    }
+
+     .popup-content {
+        padding: 25px 20px; /* Smaller padding on mobile */
+        width: 90%; /* More fluid width */
+    }
+
+    .popup-content h2 {
+        font-size: 1.3em;
+    }
+
+    .popup-content .address-text {
+        font-size: 0.95em;
+    }
+
+    .popup-button {
+        padding: 10px 20px;
+        font-size: 0.95em;
+    }
+     
+}
+@media (max-width: 200px){
+    .new-indicator {
+        /* Potentially adjust position slightly on mobile if needed */
+        transform: translate(22px, -10px) rotate(-45deg);
+        font-size: 7px;
+    }
+}

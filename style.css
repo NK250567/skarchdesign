@@ -1,0 +1,74 @@
+body {
+  font-family: sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f4f4f4;
+  color: #333;
+}
+
+.top-bar {
+  background-color: #333;
+  color: white;
+  padding: 10px 20px;
+  text-align: right;
+}
+
+.top-bar a {
+  color: white;
+  text-decoration: none;
+  margin-left: 15px;
+}
+
+.firm-identity {
+  background-color: #fff;
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.firm-logo img {
+  max-height: 80px;
+}
+
+.firm-info {
+  text-align: center;
+}
+
+.menu-bar ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+}
+
+.menu-bar li {
+  margin-right: 20px;
+}
+
+.menu-bar a {
+  text-decoration: none;
+  color: #333;
+}
+
+.container {
+  max-width: 960px;
+  margin: 20px auto;
+  padding: 20px;
+  background-color: #fff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+h2 {
+  color: #333;
+  border-bottom: 2px solid #eee;
+  padding-bottom: 10px;
+  margin-bottom: 15px;
+}
+
+p {
+  line-height: 1.6;
+  margin-bottom: 15px;
+}
+
+/* You can add more CSS styles here to customize the appearance */
